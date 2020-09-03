@@ -41,17 +41,17 @@ module Fastlane
             end
             
             # Ensure we found the tests scheme
-            if scheme_conf.nil?
-              UI.user_error!("Failed to find your UI tests scheme in your .xctestrun file.")
-            end
+            # if scheme_conf.nil?
+            #   UI.user_error!("Failed to find your UI tests scheme in your .xctestrun file.")
+            # end
 
-            unless scheme_conf["IsUITestBundle"]
-              UI.user_error!("The app bundle is not a UI test bundle. Did you build with build-for-testing argument?")
-            end
-            unless scheme_conf.key?("TestHostPath") || scheme_conf.key?("TestBundlePath")
-              UI.user_error!("Either TestHostPath or TestBundlePath must be in the app bundle. Please check your " \
-                            "xcodebuild arguments")
-            end
+            # unless scheme_conf["IsUITestBundle"]
+            #   UI.user_error!("The app bundle is not a UI test bundle. Did you build with build-for-testing argument?")
+            # end
+            # unless scheme_conf.key?("TestHostPath") || scheme_conf.key?("TestBundlePath")
+            #   UI.user_error!("Either TestHostPath or TestBundlePath must be in the app bundle. Please check your " \
+            #                 "xcodebuild arguments")
+            # end
           end
         rescue Zip::Error => e
           UI.user_error!("Failed to read the ZIP file #{file_path}: #{e.message}")
