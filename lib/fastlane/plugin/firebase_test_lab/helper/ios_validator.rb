@@ -33,11 +33,13 @@ module Fastlane
             # Find the tests scheme that's not the metadata scheme
             scheme_conf = nil
             conf.each do |key, value|
+              puts key
+              puts value
               if scheme_conf.nil? && key != '__xctestrun_metadata__' && key != 'TestPlan' && key != 'TestConfigurations'
                 scheme_conf = value
               end
             end
-
+            
             # Ensure we found the tests scheme
             if scheme_conf.nil?
               UI.user_error!("Failed to find your UI tests scheme in your .xctestrun file.")
