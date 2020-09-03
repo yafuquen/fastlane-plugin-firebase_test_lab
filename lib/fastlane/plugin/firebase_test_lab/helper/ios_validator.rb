@@ -33,9 +33,9 @@ module Fastlane
             # Find the tests scheme that's not the metadata scheme
             scheme_conf = nil
             conf.each do |key, value|
-              puts key
-              puts value
               if scheme_conf.nil? && key != '__xctestrun_metadata__' && key != 'TestPlan' && key != 'TestConfigurations'
+                puts key
+                puts value
                 scheme_conf = value
               end
             end
