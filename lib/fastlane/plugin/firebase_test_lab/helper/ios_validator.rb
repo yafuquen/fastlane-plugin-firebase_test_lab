@@ -23,6 +23,9 @@ module Fastlane
             if conf['TestPlan']
               size -= 1
             end
+            if conf['TestConfigurations']
+              size -= 1
+            end
             unless size == 1
               UI.user_error!("The app bundle may contain only one scheme, #{size} found.")
             end
@@ -30,7 +33,7 @@ module Fastlane
             # Find the tests scheme that's not the metadata scheme
             scheme_conf = nil
             conf.each do |key, value|
-              if scheme_conf.nil? && key != '__xctestrun_metadata__' && key != 'TestPlan'
+              if scheme_conf.nil? && key != '__xctestrun_metadata__' && key != 'TestPlan' && key != 'TestConfigurations'
                 scheme_conf = value
               end
             end
