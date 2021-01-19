@@ -80,7 +80,7 @@ module Fastlane
         end
       end
 
-      def start_job(gcp_project, app_path, result_path, devices, timeout_sec, additional_client_info)
+      def start_job(gcp_project, app_path, result_path, devices, timeout_sec, additional_client_info, ios_xc_test_args)
         if additional_client_info.nil? 
           additional_client_info = { version: VERSION }
         else
