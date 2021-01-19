@@ -88,6 +88,12 @@ module Fastlane
         end
         additional_client_info = additional_client_info.map { |k,v| { key: k, value: v } }
 
+        ios_xc_test_hash = {
+          testsZip: {
+            gcsPath: app_path
+          }
+        }.merge!(ios_xc_test_args)
+
         body = {
           projectId: gcp_project,
           testSpecification: {
@@ -95,11 +101,7 @@ module Fastlane
               seconds: timeout_sec
             },
             iosTestSetup: {},
-            iosXcTest: {
-              testsZip: {
-                gcsPath: app_path
-              }
-            }
+            iosXcTest: ios_xc_test_hash
           },
           environmentMatrix: {
             iosDeviceList: {
